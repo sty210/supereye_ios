@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */; };
-		ADE1BA311C673AF90094FC1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA301C673AF90094FC1A /* ViewController.swift */; };
 		ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA321C673AF90094FC1A /* Main.storyboard */; };
 		ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA351C673AF90094FC1A /* Assets.xcassets */; };
 		ADE1BA391C673AF90094FC1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA371C673AF90094FC1A /* LaunchScreen.storyboard */; };
 		ADE1BA441C673AF90094FC1A /* supereye_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA431C673AF90094FC1A /* supereye_iosTests.swift */; };
 		ADE1BA4F1C673AF90094FC1A /* supereye_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA4E1C673AF90094FC1A /* supereye_iosUITests.swift */; };
+		ADE1BA5F1C673C170094FC1A /* SunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA5E1C673C170094FC1A /* SunViewController.swift */; };
+		ADE1BA611C673C3E0094FC1A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA601C673C3E0094FC1A /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		ADE1BA2B1C673AF90094FC1A /* supereye_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = supereye_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADE1BA301C673AF90094FC1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ADE1BA331C673AF90094FC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADE1BA351C673AF90094FC1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADE1BA381C673AF90094FC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		ADE1BA4A1C673AF90094FC1A /* supereye_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = supereye_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE1BA4E1C673AF90094FC1A /* supereye_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = supereye_iosUITests.swift; sourceTree = "<group>"; };
 		ADE1BA501C673AF90094FC1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADE1BA5E1C673C170094FC1A /* SunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunViewController.swift; sourceTree = "<group>"; };
+		ADE1BA601C673C3E0094FC1A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 		ADE1BA2D1C673AF90094FC1A /* supereye_ios */ = {
 			isa = PBXGroup;
 			children = (
+				ADE1BA5D1C673B8F0094FC1A /* Main */,
+				ADE1BA5C1C673B720094FC1A /* OCR */,
 				ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */,
-				ADE1BA301C673AF90094FC1A /* ViewController.swift */,
-				ADE1BA321C673AF90094FC1A /* Main.storyboard */,
 				ADE1BA351C673AF90094FC1A /* Assets.xcassets */,
 				ADE1BA371C673AF90094FC1A /* LaunchScreen.storyboard */,
 				ADE1BA3A1C673AF90094FC1A /* Info.plist */,
@@ -123,6 +125,23 @@
 				ADE1BA501C673AF90094FC1A /* Info.plist */,
 			);
 			path = supereye_iosUITests;
+			sourceTree = "<group>";
+		};
+		ADE1BA5C1C673B720094FC1A /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OCR;
+			sourceTree = "<group>";
+		};
+		ADE1BA5D1C673B8F0094FC1A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				ADE1BA321C673AF90094FC1A /* Main.storyboard */,
+				ADE1BA601C673C3E0094FC1A /* MainViewController.swift */,
+				ADE1BA5E1C673C170094FC1A /* SunViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADE1BA311C673AF90094FC1A /* ViewController.swift in Sources */,
+				ADE1BA5F1C673C170094FC1A /* SunViewController.swift in Sources */,
 				ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */,
+				ADE1BA611C673C3E0094FC1A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +322,7 @@
 				ADE1BA331C673AF90094FC1A /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		ADE1BA371C673AF90094FC1A /* LaunchScreen.storyboard */ = {
