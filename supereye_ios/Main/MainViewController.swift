@@ -27,7 +27,27 @@ class MainViewController: SunViewController, UIImagePickerControllerDelegate, UI
         showCamera()
         toggleFlash()
         
+        let keyword = "우아한형제들"
+        searchWeb(keyword)
+        
+        
+        
+        //UIApplication.sharedApplication().openURL()
+        //let memoPicker = UIApplicationOpen
+        
     }
+    
+    
+    //원하는 검색어로 바로 브라우저를 띄워주는 함수
+    func searchWeb(keyword: String){
+        
+        //keyword를 인코딩 시켜 준 후 검색함. 한글 keyword가 들어온 경우 검색하지 못하는 상황 발생.
+        let escapedKeyword = keyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        let baseUrl = "https://www.google.com/#q="
+        let requestURL = baseUrl + escapedKeyword!
+        UIApplication.sharedApplication().openURL(NSURL(string: requestURL)!)
+    }
+    
     
     //App 실행 시 기본 카메라를 띄워주는 함수
     func showCamera(){

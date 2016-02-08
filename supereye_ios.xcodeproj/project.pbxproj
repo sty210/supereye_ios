@@ -506,6 +506,7 @@
 				ADE1BA551C673AF90094FC1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADE1BA561C673AF90094FC1A /* Build configuration list for PBXNativeTarget "supereye_iosTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +515,7 @@
 				ADE1BA581C673AF90094FC1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ADE1BA591C673AF90094FC1A /* Build configuration list for PBXNativeTarget "supereye_iosUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +524,7 @@
 				ADE1BA5B1C673AF90094FC1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
