@@ -14,7 +14,9 @@ import AVFoundation
 class MainViewController: SunViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var CameraImageView: UIImageView!
     @IBOutlet weak var ControllZoomView: UIView!
-    var newMedia: Bool?
+    @IBOutlet weak var zoomControlSlider: UISlider!
+    @IBOutlet weak var zoomResultLabel: UILabel!
+    //var newMedia: Bool?
     //var cameraFlashMode: UIImagePickerControllerCameraFlashMode
     
     override func viewDidLoad() {
@@ -24,17 +26,48 @@ class MainViewController: SunViewController, UIImagePickerControllerDelegate, UI
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        showCamera()
-        toggleFlash()
+        //showCamera()
+        /*toggleFlash()
         
         let keyword = "우아한형제들"
         searchWeb(keyword)
+        */
+        
+        //UIApplication.sharedApplication().openURL(NSURL(string: "tel://01065360331")!)
+        
+        //UIApplication.sharedApplication().openURL(NSURL(string: "sms://")!)
+        
+        //UIApplication.sharedApplication().canOpenURL(NSURL(string: "music://")!)
         
         
-        
-        //UIApplication.sharedApplication().openURL()
-        //let memoPicker = UIApplicationOpen
-        
+    }
+    
+    //Slider의 변화 감지
+    @IBAction func detectedChangeOfSlider(sender: AnyObject) {
+        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
+        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
+    }
+    
+    //Zoom Controll <Plus>버튼 눌렀을 시 동작
+    @IBAction func clickedPlusButton(sender: AnyObject) {
+        if zoomControlSlider.value <= 3{
+            zoomControlSlider.value = zoomControlSlider.value + 1
+        }else if zoomControlSlider.value <= 3.9 {
+            zoomControlSlider.value = zoomControlSlider.value + 0.1
+        }
+        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
+        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
+    }
+    
+    //Zoom Controll <Minus>버튼 눌렀을 시 동작
+    @IBAction func clickedMinusButton(sender: AnyObject) {
+        if zoomControlSlider.value >= 2{
+            zoomControlSlider.value = zoomControlSlider.value - 1
+        }else if zoomControlSlider.value >= 1.1 {
+            zoomControlSlider.value = zoomControlSlider.value - 0.1
+        }
+        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
+        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
     }
     
     
