@@ -11,64 +11,144 @@ import UIKit
 import MobileCoreServices
 import AVFoundation
 
-class MainViewController: SunViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MainViewController: UIViewController,
+                          UIImagePickerControllerDelegate,
+                          UINavigationControllerDelegate,
+                          CustomOverlayDelegate
+{
     @IBOutlet weak var CameraImageView: UIImageView!
-    @IBOutlet weak var ControllZoomView: UIView!
-    @IBOutlet weak var zoomControlSlider: UISlider!
-    @IBOutlet weak var zoomResultLabel: UILabel!
+    var imagePicker:UIImagePickerController? = UIImagePickerController()
+    
     //var newMedia: Bool?
-    //var cameraFlashMode: UIImagePickerControllerCameraFlashMode
+    
+    @IBAction func testButtonClicked(sender: AnyObject) {
+        //showCamera()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        //showCamera()
+        //imagePicker!.delegate = self
+        
+        showCamera()
         /*toggleFlash()
         
         let keyword = "우아한형제들"
         searchWeb(keyword)
         */
         
+        
+        
         //UIApplication.sharedApplication().openURL(NSURL(string: "tel://01065360331")!)
-        
         //UIApplication.sharedApplication().openURL(NSURL(string: "sms://")!)
-        
         //UIApplication.sharedApplication().canOpenURL(NSURL(string: "music://")!)
+    }
+    
+    //App 실행 시 기본 카메라를 띄워주는 함수
+    func showCamera(){
+
         
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            imagePicker!.allowsEditing = false
+            imagePicker!.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker!.cameraCaptureMode = .Photo
+            imagePicker!.showsCameraControls = false
+            imagePicker!.mediaTypes = [kUTTypeImage as String]
+            imagePicker!.delegate = self
+            imagePicker!.cameraViewTransform.ty = 70
+            //imagePicker!.
+            UIImagePickerControllerQualityType.TypeIFrame1280x720
+            
+            //customView stuff
+            let customViewController = CustomOverlayViewController(
+                nibName:"CustomOverlayViewController",
+                bundle: nil
+            )
+            let customView:CustomOverlayView = customViewController.view as! CustomOverlayView
+            
+            //self.imagePicker!.view.frame.origin =
+            
+            customView.frame = self.imagePicker!.view.frame
+            customView.delegate = self
+            
+            
+            //imagePicker!.modalTransitionStyle = .PartialCurl
+            imagePicker!.modalPresentationStyle = .FullScreen
+            self.presentViewController(imagePicker!, animated: true, completion: {self.imagePicker!.cameraOverlayView = customView})
+            
+        }else{
+            let alertVC = UIAlertController(
+                title: "No Camera",
+                message: "Sorry, this device has no camera",
+                preferredStyle: .Alert)
+            let okAction = UIAlertAction(
+                title: "OK",
+                style:.Default,
+                handler: nil)
+            alertVC.addAction(okAction)
+            presentViewController(
+                alertVC,
+                animated: true,
+                completion: nil)
+        }
         
     }
     
-    //Slider의 변화 감지
-    @IBAction func detectedChangeOfSlider(sender: AnyObject) {
-        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
-        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
+    
+     //MARK: Image Picker Controller Delegates
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        UIImageWriteToSavedPhotosAlbum(chosenImage, self,nil, nil)
     }
     
-    //Zoom Controll <Plus>버튼 눌렀을 시 동작
-    @IBAction func clickedPlusButton(sender: AnyObject) {
-        if zoomControlSlider.value <= 3{
-            zoomControlSlider.value = zoomControlSlider.value + 1
-        }else if zoomControlSlider.value <= 3.9 {
-            zoomControlSlider.value = zoomControlSlider.value + 0.1
-        }
-        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
-        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
+    //What to do if the image picker cancels.
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //Zoom Controll <Minus>버튼 눌렀을 시 동작
-    @IBAction func clickedMinusButton(sender: AnyObject) {
-        if zoomControlSlider.value >= 2{
-            zoomControlSlider.value = zoomControlSlider.value - 1
-        }else if zoomControlSlider.value >= 1.1 {
-            zoomControlSlider.value = zoomControlSlider.value - 0.1
-        }
-        zoomControlSlider.value = round(zoomControlSlider.value*10)/10
-        zoomResultLabel.text = "x"+String(zoomControlSlider.value)
+    //MARK: Custom View Delegates
+    func didCancel(overlayView:CustomOverlayView) {
+        //imagePicker!.dismissViewControllerAnimated(true, completion: nil)
+        print("dismissed!!")
     }
+    
+    func didShoot(overlayView:CustomOverlayView) {
+        imagePicker!.takePicture()
+        overlayView.testLabel.text = "찍었다."
+        print("Shot Photo")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
     
     
     //원하는 검색어로 바로 브라우저를 띄워주는 함수
@@ -81,26 +161,6 @@ class MainViewController: SunViewController, UIImagePickerControllerDelegate, UI
         UIApplication.sharedApplication().openURL(NSURL(string: requestURL)!)
     }
     
-    
-    //App 실행 시 기본 카메라를 띄워주는 함수
-    func showCamera(){
-        let imagePicker = UIImagePickerController()
-        
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-        imagePicker.mediaTypes = [kUTTypeImage as String]
-        //imagePicker.cameraFlashMode = UIImagePickerControllerCameraFlashMode.On
-        
-        
-        //밑에는 사진첩에 접근하기 위한 소스
-        //imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        //imagePicker.cameraFlashMode = UIImagePickerControllerCameraFlashMode.Auto
-        //imagePicker.allowsEditing = false
-        //
-        
-        self.presentViewController(imagePicker, animated: true,
-            completion: nil)
-    }
     
     //토치(플래시라이트)를 On/Off 시켜주는 함수
     func toggleFlash() {
@@ -123,61 +183,7 @@ class MainViewController: SunViewController, UIImagePickerControllerDelegate, UI
             }
         }
     }
-    
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        CameraImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    /*func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-    <#code#>
-    }
-    */
-    
-    
-   /*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-        if mediaType.isEqualToString(kUTTypeImage as! String) {
-            let image = info[UIImagePickerControllerOriginalImage]
-                as! UIImage
-            
-            CameraImageView.image = image
-            
-            if (newMedia == true) {
-                UIImageWriteToSavedPhotosAlbum(image, self,
-                    "image:didFinishSavingWithError:contextInfo:", nil)
-            } else if mediaType.isEqualToString(kUTTypeMovie as! String) {
-                // Code to support video here
-            }
-            
-        }
-    }
-    
-    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
-        
-        if error != nil {
-            let alert = UIAlertController(title: "Save Failed",
-                message: "Failed to save image",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let cancelAction = UIAlertAction(title: "OK",
-                style: .Cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            self.presentViewController(alert, animated: true,
-                completion: nil)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }*/
+
     
     
     override func didReceiveMemoryWarning() {

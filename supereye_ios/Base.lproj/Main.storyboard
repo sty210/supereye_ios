@@ -13,98 +13,16 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" restorationIdentifier="MainViewController" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfP-6l-w0u" userLabel="ZoomResultLabel">
-                                <rect key="frame" x="0.0" y="20" width="375" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="aE1-YS-5Np"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-mk-uDc" userLabel="CameraImageView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="577"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OY0-YD-lyQ" userLabel="ControllZoomView">
-                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QA-q7-VXP">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="kYI-9C-Lrg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                        <state key="normal" title="-">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="clickedMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OKF-k3-5gZ"/>
-                                        </connections>
-                                    </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="M8X-Cb-RQl">
-                                        <rect key="frame" x="48" y="0.0" width="279" height="71"/>
-                                        <connections>
-                                            <action selector="detectedChangeOfSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="yUb-gw-pTp"/>
-                                        </connections>
-                                    </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHG-DB-eZU">
-                                        <rect key="frame" x="325" y="0.0" width="50" height="70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="M2V-If-ez4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                        <state key="normal" title="+">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="clickedPlusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fp8-zf-Pwb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="M8X-Cb-RQl" secondAttribute="bottom" id="KXj-Ps-AkV"/>
-                                    <constraint firstItem="8QA-q7-VXP" firstAttribute="top" secondItem="OY0-YD-lyQ" secondAttribute="top" id="RF9-5F-UWR"/>
-                                    <constraint firstItem="8QA-q7-VXP" firstAttribute="leading" secondItem="OY0-YD-lyQ" secondAttribute="leading" id="XiP-6b-mXF"/>
-                                    <constraint firstAttribute="bottom" secondItem="8QA-q7-VXP" secondAttribute="bottom" id="Z4H-5k-p6D"/>
-                                    <constraint firstAttribute="height" constant="70" id="a40-bg-EWd"/>
-                                    <constraint firstAttribute="trailing" secondItem="iHG-DB-eZU" secondAttribute="trailing" id="gAw-z1-d6a"/>
-                                    <constraint firstItem="M8X-Cb-RQl" firstAttribute="top" secondItem="OY0-YD-lyQ" secondAttribute="top" id="iBp-Gm-RQs"/>
-                                    <constraint firstItem="M8X-Cb-RQl" firstAttribute="leading" secondItem="8QA-q7-VXP" secondAttribute="trailing" id="ofx-Fh-aeN"/>
-                                    <constraint firstItem="iHG-DB-eZU" firstAttribute="leading" secondItem="M8X-Cb-RQl" secondAttribute="trailing" id="tLX-RG-zb6"/>
-                                    <constraint firstAttribute="bottom" secondItem="iHG-DB-eZU" secondAttribute="bottom" id="xqH-b5-Ya6"/>
-                                    <constraint firstItem="iHG-DB-eZU" firstAttribute="top" secondItem="OY0-YD-lyQ" secondAttribute="top" id="y8h-KS-jon"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OY0-YD-lyQ" secondAttribute="bottom" id="5Dm-pD-m5h"/>
-                            <constraint firstItem="ZfP-6l-w0u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Eax-Ws-P4U"/>
-                            <constraint firstAttribute="trailing" secondItem="OY0-YD-lyQ" secondAttribute="trailing" id="LcU-GM-r6X"/>
-                            <constraint firstItem="ZfP-6l-w0u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MX4-lp-uOp"/>
-                            <constraint firstAttribute="trailing" secondItem="Uuh-mk-uDc" secondAttribute="trailing" id="SKT-S5-BTh"/>
-                            <constraint firstItem="Uuh-mk-uDc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TCW-3S-nTF"/>
-                            <constraint firstAttribute="trailing" secondItem="ZfP-6l-w0u" secondAttribute="trailing" id="U7p-Rg-lyR"/>
-                            <constraint firstItem="Uuh-mk-uDc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YlX-l8-Vzf"/>
-                            <constraint firstItem="OY0-YD-lyQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dcm-90-u15"/>
-                            <constraint firstItem="OY0-YD-lyQ" firstAttribute="top" secondItem="Uuh-mk-uDc" secondAttribute="bottom" id="tpj-v4-bBy"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="CameraImageView" destination="Uuh-mk-uDc" id="RgS-MW-45x"/>
-                        <outlet property="ControllZoomView" destination="OY0-YD-lyQ" id="Rhv-xA-pT9"/>
-                        <outlet property="zoomControlSlider" destination="M8X-Cb-RQl" id="FEj-U8-YVR"/>
-                        <outlet property="zoomResultLabel" destination="ZfP-6l-w0u" id="ZKn-nw-5cA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420.5" y="463.5"/>
+            <point key="canvasLocation" x="528.5" y="464.5"/>
         </scene>
     </scenes>
 </document>

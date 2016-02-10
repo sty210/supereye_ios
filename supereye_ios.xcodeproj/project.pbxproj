@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD5C705A1C69C25600C59701 /* CustomOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C70581C69C25600C59701 /* CustomOverlayViewController.swift */; };
+		AD5C705B1C69C25600C59701 /* CustomOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */; };
+		AD5C705D1C69C26A00C59701 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */; };
 		ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */; };
 		ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA321C673AF90094FC1A /* Main.storyboard */; };
 		ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA351C673AF90094FC1A /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD5C70581C69C25600C59701 /* CustomOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayViewController.swift; sourceTree = "<group>"; };
+		AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayViewController.xib; sourceTree = "<group>"; };
+		AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
 		ADE1BA2B1C673AF90094FC1A /* supereye_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = supereye_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADE1BA331C673AF90094FC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 			children = (
 				ADE1BA321C673AF90094FC1A /* Main.storyboard */,
 				ADE1BA601C673C3E0094FC1A /* MainViewController.swift */,
+				AD5C70581C69C25600C59701 /* CustomOverlayViewController.swift */,
+				AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */,
+				AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */,
 				ADE1BA5E1C673C170094FC1A /* SunViewController.swift */,
 			);
 			path = Main;
@@ -251,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5C705B1C69C25600C59701 /* CustomOverlayViewController.xib in Resources */,
 				ADE1BA391C673AF90094FC1A /* LaunchScreen.storyboard in Resources */,
 				ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */,
 				ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */,
@@ -278,8 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5C705A1C69C25600C59701 /* CustomOverlayViewController.swift in Sources */,
 				ADE1BA5F1C673C170094FC1A /* SunViewController.swift in Sources */,
 				ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */,
+				AD5C705D1C69C26A00C59701 /* CustomOverlayView.swift in Sources */,
 				ADE1BA611C673C3E0094FC1A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
