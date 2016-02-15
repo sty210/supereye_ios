@@ -19,11 +19,11 @@ class CustomOverlayView: UIView {
 
     var delegate:CustomOverlayDelegate! = nil
     @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var zoomLevelLabel: UILabel!
+    /*@IBOutlet weak var zoomLevelLabel: UILabel!
     @IBOutlet weak var zoomSlider: UISlider!
     
     
-     //Slider의 변화 감지
+    //Slider의 변화 감지
     @IBAction func detectedChangeOfSlider(sender: AnyObject) {
         zoomSlider.value = round(zoomSlider.value*10)/10
         zoomLevelLabel.text = "x"+String(zoomSlider.value)
@@ -49,10 +49,11 @@ class CustomOverlayView: UIView {
         }
         zoomSlider.value = round(zoomSlider.value*10)/10
         zoomLevelLabel.text = "x"+String(zoomSlider.value)
-    }
+    }*/
     
     @IBAction func clickedSearchButton(sender: AnyObject) {
-        let resultKeyword: String = "아직 구현 안됐지롱^^"
+        testLabel.text = "검색들어갑니다."
+        let resultKeyword: String = ""
         delegate.searchWeb(resultKeyword)
     }
     
@@ -61,24 +62,12 @@ class CustomOverlayView: UIView {
         delegate.toggleFlash()
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        testLabel.text = "뭐 넣을 까?"
-        delegate.didCancel(self)
-    }
     
     @IBAction func shootButton(sender: AnyObject) {
         //testLabel.text = "Even Cooler Camera"
         delegate.didShoot(self)
     }
 
-    
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+
 
 }

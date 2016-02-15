@@ -14,37 +14,35 @@ import AVFoundation
 class MainViewController: UIViewController,
                           UIImagePickerControllerDelegate,
                           UINavigationControllerDelegate,
-                          CustomOverlayDelegate
+                          CustomOverlayDelegate,
+                          G8TesseractDelegate
+    
 {
-    @IBOutlet weak var CameraImageView: UIImageView!
-    var imagePicker:UIImagePickerController? = UIImagePickerController()
+    @IBOutlet weak var shootedImageView: UIImageView!
+    var copiedImagePicker:UIImagePickerController? = UIImagePickerController()
+    let screenWidth = UIScreen.mainScreen().bounds.size.width
+    let screenHeight = UIScreen.mainScreen().bounds.size.height
+    var newMedia: Bool?
+    var isShooted: Bool = false
     
-    //var newMedia: Bool?
-    
-    @IBAction func testButtonClicked(sender: AnyObject) {
-        //showCamera()
+    func shouldCancelImageRecognitionForTesseract(tesseract: G8Tesseract!) -> Bool {
+        return false; // return true if you need to interrupt tesseract before it finishes
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
     
     override func viewDidAppear(animated: Bool) {
+        
         super.viewDidAppear(true)
         
-        //imagePicker!.delegate = self
+        if isShooted == false{
+            showCamera()
+        }
         
-        showCamera()
-        /*toggleFlash()
-        
-        let keyword = "우아한형제들"
-        searchWeb(keyword)
-        */
-        
-        
-        
+
+
         //UIApplication.sharedApplication().openURL(NSURL(string: "tel://01065360331")!)
         //UIApplication.sharedApplication().openURL(NSURL(string: "sms://")!)
         //UIApplication.sharedApplication().canOpenURL(NSURL(string: "music://")!)
@@ -55,15 +53,14 @@ class MainViewController: UIViewController,
 
         
         if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            let imagePicker:UIImagePickerController? = UIImagePickerController()
             imagePicker!.allowsEditing = false
             imagePicker!.sourceType = UIImagePickerControllerSourceType.Camera
             imagePicker!.cameraCaptureMode = .Photo
             imagePicker!.showsCameraControls = false
             imagePicker!.mediaTypes = [kUTTypeImage as String]
             imagePicker!.delegate = self
-            imagePicker!.cameraViewTransform.ty = 70
-            //imagePicker!.
-            UIImagePickerControllerQualityType.TypeIFrame1280x720
+            //imagePicker!.cameraViewTransform.ty = 20
             
             //customView stuff
             let customViewController = CustomOverlayViewController(
@@ -71,16 +68,47 @@ class MainViewController: UIViewController,
                 bundle: nil
             )
             let customView:CustomOverlayView = customViewController.view as! CustomOverlayView
+        
             
-            //self.imagePicker!.view.frame.origin =
+            let translate: CGAffineTransform = CGAffineTransformMakeTranslation(0.0, 70.0); //This slots the preview exactly in the middle of the screen by moving it down 0 points
+            let scale: CGAffineTransform  = CGAffineTransformScale(translate, 1.0, 1.2);
             
-            customView.frame = self.imagePicker!.view.frame
+            imagePicker!.cameraViewTransform = translate
+            imagePicker!.cameraViewTransform = scale
+
+            
+            imagePicker!.view.frame.size.height = self.screenHeight
+            customView.frame = imagePicker!.view.frame
+            //customView.transform = CGAffineTransformMakeTranslation(0.0, 20.0);
             customView.delegate = self
             
             
+            newMedia = true
+    
+            
+            /*
+            self.imagePicker!.view.multipleTouchEnabled = false
+            self.imagePicker!.view.exclusiveTouch = true
+            customView.multipleTouchEnabled = false
+            customView.exclusiveTouch = true
+            */
+            
+            
+            
+            
+            
+            //이 두줄 지우면 안됌!! 보류 !!!!!!
+            //let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "pinchDetected")
+            //customView.addGestureRecognizer(pinchRecognizer)
+            
+            
+            
             //imagePicker!.modalTransitionStyle = .PartialCurl
+            
             imagePicker!.modalPresentationStyle = .FullScreen
-            self.presentViewController(imagePicker!, animated: true, completion: {self.imagePicker!.cameraOverlayView = customView})
+            self.presentViewController(imagePicker!, animated: true, completion: {imagePicker!.cameraOverlayView = customView})
+            
+            copiedImagePicker = imagePicker
             
         }else{
             let alertVC = UIAlertController(
@@ -100,18 +128,68 @@ class MainViewController: UIViewController,
         
     }
     
+    /*func pinchDetected(){
+        print("pinchDetected!!")
+        //self.imagePicker!.view.userInteractionEnabled = false
+    }
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("touchesEnded!!")
+        //self.imagePicker!.view.userInteractionEnabled = true
+    }*/
+    
     
      //MARK: Image Picker Controller Delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
-        UIImageWriteToSavedPhotosAlbum(chosenImage, self,nil, nil)
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        shootedImageView.image = chosenImage
+        
+        isShooted = true
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func shootedImageSave(sender: AnyObject) {
+        isShooted = false
+        //저장 후 카메라를 다시 연다.
+        UIImageWriteToSavedPhotosAlbum(self.shootedImageView.image!, self,nil, nil)
+        showCamera()
+    }
+    
+    @IBAction func shootedImageSearch(sender: AnyObject) {
+        
+        //찍힌 사진을 기반으로 검색, 문자인식 구현 중
+        
+        let tesseract:G8Tesseract = G8Tesseract(language:"kor3+eng")
+        tesseract.delegate = self
+        tesseract.image = shootedImageView.image
+        //tesseract.image = UIImage(named: "test4")
+        
+        tesseract.recognize()
+        print(".")
+        print(".")
+        print(".")
+        print("tesseract.recognizedText : "+tesseract.recognizedText)
+        print("--------------------------------------------")
+
+        searchWeb(tesseract.recognizedText)
+        
+        //searchWeb("이 곳에 키워드가 들어갑니다.")
+    }
+    
+    @IBAction func shootedImageCancel(sender: AnyObject) {
+        isShooted = false
+        //카메라를 다시 연다.
+        showCamera()
+    }
+    
+
     
     //MARK: Custom View Delegates
     func didCancel(overlayView:CustomOverlayView) {
@@ -120,35 +198,10 @@ class MainViewController: UIViewController,
     }
     
     func didShoot(overlayView:CustomOverlayView) {
-        imagePicker!.takePicture()
+        copiedImagePicker!.takePicture()
         overlayView.testLabel.text = "찍었다."
         print("Shot Photo")
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     
     
     //원하는 검색어로 바로 브라우저를 띄워주는 함수
@@ -183,8 +236,19 @@ class MainViewController: UIViewController,
             }
         }
     }
-
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
