@@ -9,9 +9,18 @@
 import UIKit
 
 class CustomOverlayViewController: UIViewController {
+    @IBOutlet weak var shootButton: UIButton!
+    @IBOutlet weak var flashButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var voiceButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        shootButton.setImage(UIImage(named: "takephoto_selected"), forState: .Highlighted)
+        flashButton.setImage(UIImage(named: "flash_selected"), forState: .Highlighted)
+        searchButton.setImage(UIImage(named: "search_selected"), forState: .Highlighted)
+        voiceButton.setImage(UIImage(named: "voice_selected"), forState: .Highlighted)
 
         // Do any additional setup after loading the view.
     }
@@ -25,14 +34,5 @@ class CustomOverlayViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

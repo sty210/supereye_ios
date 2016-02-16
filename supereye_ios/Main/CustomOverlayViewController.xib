@@ -7,7 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomOverlayViewController" customModule="supereye_ios" customModuleProvider="target">
             <connections>
+                <outlet property="flashButton" destination="AkN-Pw-mHm" id="Zoj-jL-Kge"/>
+                <outlet property="searchButton" destination="0KH-6E-mNL" id="N96-sH-DqF"/>
+                <outlet property="shootButton" destination="jZm-GZ-fwZ" id="igo-Ao-1No"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voiceButton" destination="hRx-V0-A3H" id="9LS-TA-uU1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun's SuperEye" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trL-YR-2QU">
-                    <rect key="frame" x="124" y="323.5" width="127.5" height="20.5"/>
+                    <rect key="frame" x="124" y="323" width="127.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -41,8 +45,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phS-Uf-ggh" userLabel="bottomView">
                     <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoom Now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2j-2x-ow2" userLabel="titleLabel">
-                            <rect key="frame" x="141" y="24.5" width="93" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zoom now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2j-2x-ow2" userLabel="titleLabel">
+                            <rect key="frame" x="143.5" y="24.5" width="88.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -55,18 +59,7 @@
                         <constraint firstItem="N2j-2x-ow2" firstAttribute="centerY" secondItem="phS-Uf-ggh" secondAttribute="centerY" id="jPC-8g-aa0"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkN-Pw-mHm">
-                    <rect key="frame" x="137" y="527" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="TZl-UW-wDE"/>
-                        <constraint firstAttribute="width" constant="40" id="xHj-86-HIb"/>
-                    </constraints>
-                    <state key="normal" title="flash" image="flash"/>
-                    <connections>
-                        <action selector="clickedFlashButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="SqL-l2-tGV"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KH-6E-mNL" userLabel="search">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KH-6E-mNL" userLabel="search">
                     <rect key="frame" x="197" y="527" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="XqP-mq-Ipm"/>
@@ -77,7 +70,7 @@
                         <action selector="clickedSearchButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="1A9-FR-rVQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZm-GZ-fwZ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZm-GZ-fwZ">
                     <rect key="frame" x="77" y="527" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="K8M-vX-acD"/>
@@ -88,13 +81,27 @@
                         <action selector="shootButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="MGh-oz-tKp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-V0-A3H" userLabel="gallery">
-                    <rect key="frame" x="257" y="527" width="40" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-V0-A3H" userLabel="gallery">
+                    <rect key="frame" x="254.5" y="522" width="45" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="OWw-9R-VLm"/>
-                        <constraint firstAttribute="height" constant="40" id="cEG-B6-1i8"/>
+                        <constraint firstAttribute="width" constant="45" id="OWw-9R-VLm"/>
+                        <constraint firstAttribute="height" constant="45" id="cEG-B6-1i8"/>
                     </constraints>
-                    <state key="normal" image="gallery"/>
+                    <state key="normal" image="voice"/>
+                    <connections>
+                        <action selector="clickedVoiceButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="2Iu-B6-nDZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkN-Pw-mHm">
+                    <rect key="frame" x="137" y="527" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="TZl-UW-wDE"/>
+                        <constraint firstAttribute="width" constant="40" id="xHj-86-HIb"/>
+                    </constraints>
+                    <state key="normal" title="flash" image="flash"/>
+                    <connections>
+                        <action selector="clickedFlashButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="SqL-l2-tGV"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -121,6 +128,9 @@
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
+                <outlet property="flashButton" destination="AkN-Pw-mHm" id="BUl-mc-tWT"/>
+                <outlet property="searchButton" destination="0KH-6E-mNL" id="RIw-iZ-QKC"/>
+                <outlet property="shootButton" destination="jZm-GZ-fwZ" id="Rgr-LU-z95"/>
                 <outlet property="testLabel" destination="trL-YR-2QU" id="PUS-ma-aoW"/>
             </connections>
             <point key="canvasLocation" x="301.5" y="350.5"/>
@@ -128,8 +138,8 @@
     </objects>
     <resources>
         <image name="flash" width="64" height="64"/>
-        <image name="gallery" width="64" height="64"/>
         <image name="search" width="64" height="64"/>
         <image name="takephoto" width="64" height="64"/>
+        <image name="voice" width="128" height="128"/>
     </resources>
 </document>

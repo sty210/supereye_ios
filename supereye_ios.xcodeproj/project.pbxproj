@@ -12,6 +12,17 @@
 		AD5C705A1C69C25600C59701 /* CustomOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C70581C69C25600C59701 /* CustomOverlayViewController.swift */; };
 		AD5C705B1C69C25600C59701 /* CustomOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */; };
 		AD5C705D1C69C26A00C59701 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */; };
+		AD84EB831C72F63A00A49CDB /* DaumSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB7F1C72F63A00A49CDB /* DaumSpeech.framework */; };
+		AD84EB841C72F63A00A49CDB /* DaumSpeechResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD84EB811C72F63A00A49CDB /* DaumSpeechResources.bundle */; };
+		AD84EB851C72F63A00A49CDB /* SpeechRecognizerDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD84EB821C72F63A00A49CDB /* SpeechRecognizerDefault.strings */; };
+		AD84EB891C72F85A00A49CDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB881C72F85A00A49CDB /* MediaPlayer.framework */; };
+		AD84EB8B1C72F86B00A49CDB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB8A1C72F86B00A49CDB /* QuartzCore.framework */; };
+		AD84EB8D1C72F87700A49CDB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB8C1C72F87700A49CDB /* SystemConfiguration.framework */; };
+		AD84EB8F1C72F88000A49CDB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB8E1C72F88000A49CDB /* AVFoundation.framework */; };
+		AD84EB911C72F88900A49CDB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB901C72F88900A49CDB /* AudioToolbox.framework */; };
+		AD84EB931C72F89200A49CDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB921C72F89200A49CDB /* UIKit.framework */; };
+		AD84EB951C72F89B00A49CDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB941C72F89B00A49CDB /* Foundation.framework */; };
+		ADD1500A1C7339BE0058B04C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD150091C7339BE0058B04C /* CoreGraphics.framework */; };
 		ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */; };
 		ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA321C673AF90094FC1A /* Main.storyboard */; };
 		ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA351C673AF90094FC1A /* Assets.xcassets */; };
@@ -46,8 +57,18 @@
 		AD5C70581C69C25600C59701 /* CustomOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayViewController.swift; sourceTree = "<group>"; };
 		AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayViewController.xib; sourceTree = "<group>"; };
 		AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
-		AD72716F1C6DA927002A0B69 /* G8TesseractDelegate-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "G8TesseractDelegate-Bridging-Header.h"; sourceTree = "<group>"; };
-		AD7271701C6DB01A002A0B69 /* libTesseractOCRiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTesseractOCRiOS.a; path = "Pods/../build/Debug-iphoneos/libTesseractOCRiOS.a"; sourceTree = "<group>"; };
+		AD72716F1C6DA927002A0B69 /* Supereye-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Supereye-Bridging-Header.h"; sourceTree = "<group>"; };
+		AD84EB7F1C72F63A00A49CDB /* DaumSpeech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumSpeech.framework; sourceTree = "<group>"; };
+		AD84EB811C72F63A00A49CDB /* DaumSpeechResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DaumSpeechResources.bundle; sourceTree = "<group>"; };
+		AD84EB821C72F63A00A49CDB /* SpeechRecognizerDefault.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = SpeechRecognizerDefault.strings; sourceTree = "<group>"; };
+		AD84EB881C72F85A00A49CDB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		AD84EB8A1C72F86B00A49CDB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AD84EB8C1C72F87700A49CDB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AD84EB8E1C72F88000A49CDB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AD84EB901C72F88900A49CDB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AD84EB921C72F89200A49CDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AD84EB941C72F89B00A49CDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ADD150091C7339BE0058B04C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ADE1BA2B1C673AF90094FC1A /* supereye_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = supereye_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADE1BA331C673AF90094FC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +93,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD1500A1C7339BE0058B04C /* CoreGraphics.framework in Frameworks */,
+				AD84EB951C72F89B00A49CDB /* Foundation.framework in Frameworks */,
+				AD84EB931C72F89200A49CDB /* UIKit.framework in Frameworks */,
+				AD84EB911C72F88900A49CDB /* AudioToolbox.framework in Frameworks */,
+				AD84EB8F1C72F88000A49CDB /* AVFoundation.framework in Frameworks */,
+				AD84EB8D1C72F87700A49CDB /* SystemConfiguration.framework in Frameworks */,
+				AD84EB8B1C72F86B00A49CDB /* QuartzCore.framework in Frameworks */,
+				AD84EB891C72F85A00A49CDB /* MediaPlayer.framework in Frameworks */,
+				AD84EB831C72F63A00A49CDB /* DaumSpeech.framework in Frameworks */,
 				AD3A169D1C6DA3A8008B4CCB /* libz.tbd in Frameworks */,
 				66980843D82568840D0625B5 /* libPods-supereye_ios.a in Frameworks */,
 			);
@@ -94,6 +124,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD84EB7E1C72F63A00A49CDB /* DaumSpeech.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				AD84EB7F1C72F63A00A49CDB /* DaumSpeech.framework */,
+				AD84EB801C72F63A00A49CDB /* Resources */,
+			);
+			name = DaumSpeech.embeddedframework;
+			path = ../DaumSpeech.embeddedframework;
+			sourceTree = "<group>";
+		};
+		AD84EB801C72F63A00A49CDB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AD84EB811C72F63A00A49CDB /* DaumSpeechResources.bundle */,
+				AD84EB821C72F63A00A49CDB /* SpeechRecognizerDefault.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		ADE1BA221C673AF90094FC1A = {
 			isa = PBXGroup;
 			children = (
@@ -119,10 +168,10 @@
 		ADE1BA2D1C673AF90094FC1A /* supereye_ios */ = {
 			isa = PBXGroup;
 			children = (
-				AD72716F1C6DA927002A0B69 /* G8TesseractDelegate-Bridging-Header.h */,
+				AD84EB7E1C72F63A00A49CDB /* DaumSpeech.embeddedframework */,
+				AD72716F1C6DA927002A0B69 /* Supereye-Bridging-Header.h */,
 				ADF057F71C6C9CF300F9624F /* tessdata */,
 				ADE1BA5D1C673B8F0094FC1A /* Main */,
-				ADE1BA5C1C673B720094FC1A /* OCR */,
 				ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */,
 				ADE1BA351C673AF90094FC1A /* Assets.xcassets */,
 				ADE1BA371C673AF90094FC1A /* LaunchScreen.storyboard */,
@@ -147,13 +196,6 @@
 				ADE1BA501C673AF90094FC1A /* Info.plist */,
 			);
 			path = supereye_iosUITests;
-			sourceTree = "<group>";
-		};
-		ADE1BA5C1C673B720094FC1A /* OCR */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OCR;
 			sourceTree = "<group>";
 		};
 		ADE1BA5D1C673B8F0094FC1A /* Main */ = {
@@ -181,7 +223,14 @@
 		EE388A10C275E001355485B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD7271701C6DB01A002A0B69 /* libTesseractOCRiOS.a */,
+				ADD150091C7339BE0058B04C /* CoreGraphics.framework */,
+				AD84EB941C72F89B00A49CDB /* Foundation.framework */,
+				AD84EB921C72F89200A49CDB /* UIKit.framework */,
+				AD84EB901C72F88900A49CDB /* AudioToolbox.framework */,
+				AD84EB8E1C72F88000A49CDB /* AVFoundation.framework */,
+				AD84EB8C1C72F87700A49CDB /* SystemConfiguration.framework */,
+				AD84EB8A1C72F86B00A49CDB /* QuartzCore.framework */,
+				AD84EB881C72F85A00A49CDB /* MediaPlayer.framework */,
 				AD3A169C1C6DA3A8008B4CCB /* libz.tbd */,
 				E9C4FCD48F5779C85C1698D9 /* libPods-supereye_ios.a */,
 			);
@@ -301,7 +350,9 @@
 				AD5C705B1C69C25600C59701 /* CustomOverlayViewController.xib in Resources */,
 				ADE1BA391C673AF90094FC1A /* LaunchScreen.storyboard in Resources */,
 				ADF057F81C6C9CF300F9624F /* tessdata in Resources */,
+				AD84EB851C72F63A00A49CDB /* SpeechRecognizerDefault.strings in Resources */,
 				ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */,
+				AD84EB841C72F63A00A49CDB /* DaumSpeechResources.bundle in Resources */,
 				ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,17 +572,26 @@
 			baseConfigurationReference = C3E617E873032D53E29A8561 /* Pods-supereye_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/supereye_ios/DaumSpeech.embeddedframework",
+					"$(PROJECT_DIR)/Pods/DaumSpeech.embeddedframework",
+					"$(PROJECT_DIR)/DaumSpeech.embeddedframework",
+				);
 				INFOPLIST_FILE = supereye_ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/DaumSpeech.embeddedframework",
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sun.supereye-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/G8TesseractDelegate-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/Supereye-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -541,16 +601,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/supereye_ios/DaumSpeech.embeddedframework",
+					"$(PROJECT_DIR)/Pods/DaumSpeech.embeddedframework",
+					"$(PROJECT_DIR)/DaumSpeech.embeddedframework",
+				);
 				INFOPLIST_FILE = supereye_ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/DaumSpeech.embeddedframework",
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sun.supereye-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/G8TesseractDelegate-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_NAME)/Supereye-Bridging-Header.h";
 			};
 			name = Release;
 		};
