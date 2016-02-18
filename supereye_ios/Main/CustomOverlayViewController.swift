@@ -8,11 +8,14 @@
 
 import UIKit
 
-class CustomOverlayViewController: UIViewController {
+class CustomOverlayViewController: UIViewController
+{
+    
     @IBOutlet weak var shootButton: UIButton!
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var voiceButton: UIButton!
+    @IBOutlet weak var recordView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,14 @@ class CustomOverlayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func setVoiceRecognitionUsing(){
+        voiceButton.setImage(UIImage(named: "voice_selected"), forState: .Normal)
+        recordView.hidden = false
+    }
+    
+    func setVoiceRecognitionNotUsing(){
+        voiceButton.setImage(UIImage(named: "voice"), forState: .Normal)
+        recordView.hidden = true
+    }
 
 }

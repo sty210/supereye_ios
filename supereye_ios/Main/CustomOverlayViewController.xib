@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomOverlayViewController" customModule="supereye_ios" customModuleProvider="target">
             <connections>
                 <outlet property="flashButton" destination="AkN-Pw-mHm" id="Zoj-jL-Kge"/>
+                <outlet property="recordView" destination="0t3-Rn-e2a" id="2Md-uK-7vz"/>
                 <outlet property="searchButton" destination="0KH-6E-mNL" id="N96-sH-DqF"/>
                 <outlet property="shootButton" destination="jZm-GZ-fwZ" id="igo-Ao-1No"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,12 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun's SuperEye" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trL-YR-2QU">
-                    <rect key="frame" x="124" y="323" width="127.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-AF-mPG" userLabel="topView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                     <subviews>
@@ -42,11 +37,39 @@
                         <constraint firstItem="8aQ-GC-XNg" firstAttribute="centerY" secondItem="LLU-AF-mPG" secondAttribute="centerY" id="toj-b9-CTs"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0t3-Rn-e2a" userLabel="recordView">
+                    <rect key="frame" x="137" y="70" width="100" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="record" translatesAutoresizingMaskIntoConstraints="NO" id="1iP-JC-BK0">
+                            <rect key="frame" x="15" y="5" width="70" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="S3K-qO-mod"/>
+                                <constraint firstAttribute="width" constant="70" id="c7X-2y-P6s"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell any keyword!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb1-cN-6N0">
+                            <rect key="frame" x="0.0" y="80" width="100" height="13.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fb1-cN-6N0" firstAttribute="leading" secondItem="0t3-Rn-e2a" secondAttribute="leading" id="0ET-5v-tMb"/>
+                        <constraint firstItem="fb1-cN-6N0" firstAttribute="top" secondItem="1iP-JC-BK0" secondAttribute="bottom" constant="5" id="1zT-Fe-7BK"/>
+                        <constraint firstItem="1iP-JC-BK0" firstAttribute="top" secondItem="0t3-Rn-e2a" secondAttribute="top" constant="5" id="6bO-hM-U98"/>
+                        <constraint firstAttribute="trailing" secondItem="fb1-cN-6N0" secondAttribute="trailing" id="C9w-Tv-B0e"/>
+                        <constraint firstAttribute="trailing" secondItem="1iP-JC-BK0" secondAttribute="trailing" constant="15" id="HHO-vu-aJu"/>
+                        <constraint firstItem="fb1-cN-6N0" firstAttribute="centerX" secondItem="0t3-Rn-e2a" secondAttribute="centerX" id="W8f-db-wk6"/>
+                        <constraint firstAttribute="width" constant="100" id="frR-C5-V4I"/>
+                        <constraint firstAttribute="height" constant="100" id="jeg-Oc-enw"/>
+                        <constraint firstItem="1iP-JC-BK0" firstAttribute="leading" secondItem="0t3-Rn-e2a" secondAttribute="leading" constant="15" id="qI6-bH-zDp"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phS-Uf-ggh" userLabel="bottomView">
                     <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zoom now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2j-2x-ow2" userLabel="titleLabel">
-                            <rect key="frame" x="143.5" y="24.5" width="88.5" height="20.5"/>
+                            <rect key="frame" x="143" y="24" width="88.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -81,8 +104,8 @@
                         <action selector="shootButton:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="MGh-oz-tKp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-V0-A3H" userLabel="gallery">
-                    <rect key="frame" x="254.5" y="522" width="45" height="45"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRx-V0-A3H" userLabel="voiceButton">
+                    <rect key="frame" x="255" y="522" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="OWw-9R-VLm"/>
                         <constraint firstAttribute="height" constant="45" id="cEG-B6-1i8"/>
@@ -108,15 +131,15 @@
                 <constraint firstItem="jZm-GZ-fwZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-90" id="4Kh-eM-1k5"/>
                 <constraint firstAttribute="trailing" secondItem="LLU-AF-mPG" secondAttribute="trailing" id="8xs-sR-eRJ"/>
                 <constraint firstItem="0KH-6E-mNL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="30" id="BUi-Nx-OfZ"/>
-                <constraint firstItem="trL-YR-2QU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LGe-OU-Hec"/>
-                <constraint firstItem="trL-YR-2QU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="QDG-GZ-MPl"/>
                 <constraint firstItem="phS-Uf-ggh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QhR-hh-PLV"/>
                 <constraint firstAttribute="trailing" secondItem="phS-Uf-ggh" secondAttribute="trailing" id="RLo-PJ-rPL"/>
+                <constraint firstItem="0t3-Rn-e2a" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VpJ-Kg-DGX"/>
                 <constraint firstItem="LLU-AF-mPG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WQV-8N-EOY"/>
                 <constraint firstItem="LLU-AF-mPG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YPC-Cg-5Jq"/>
                 <constraint firstItem="AkN-Pw-mHm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-30" id="erU-As-tNO"/>
                 <constraint firstAttribute="bottom" secondItem="phS-Uf-ggh" secondAttribute="bottom" id="fDb-yi-tnr"/>
                 <constraint firstItem="hRx-V0-A3H" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="90" id="kcx-lQ-qMs"/>
+                <constraint firstItem="0t3-Rn-e2a" firstAttribute="top" secondItem="LLU-AF-mPG" secondAttribute="bottom" id="oMf-gE-unW"/>
                 <constraint firstItem="phS-Uf-ggh" firstAttribute="top" secondItem="hRx-V0-A3H" secondAttribute="bottom" constant="30" id="pwo-nl-yzy"/>
                 <constraint firstItem="phS-Uf-ggh" firstAttribute="top" secondItem="0KH-6E-mNL" secondAttribute="bottom" constant="30" id="sU1-Z4-45t"/>
                 <constraint firstItem="phS-Uf-ggh" firstAttribute="top" secondItem="jZm-GZ-fwZ" secondAttribute="bottom" constant="30" id="sUb-Er-SQp"/>
@@ -129,15 +152,17 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
                 <outlet property="flashButton" destination="AkN-Pw-mHm" id="BUl-mc-tWT"/>
+                <outlet property="recordView" destination="0t3-Rn-e2a" id="tys-e0-sgQ"/>
                 <outlet property="searchButton" destination="0KH-6E-mNL" id="RIw-iZ-QKC"/>
                 <outlet property="shootButton" destination="jZm-GZ-fwZ" id="Rgr-LU-z95"/>
-                <outlet property="testLabel" destination="trL-YR-2QU" id="PUS-ma-aoW"/>
+                <outlet property="voiceButton" destination="hRx-V0-A3H" id="biM-9Y-tOM"/>
             </connections>
             <point key="canvasLocation" x="301.5" y="350.5"/>
         </view>
     </objects>
     <resources>
         <image name="flash" width="64" height="64"/>
+        <image name="record" width="64" height="64"/>
         <image name="search" width="64" height="64"/>
         <image name="takephoto" width="64" height="64"/>
         <image name="voice" width="128" height="128"/>

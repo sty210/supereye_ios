@@ -20,7 +20,9 @@ class MainViewController: UIViewController,
                           MTSpeechRecognizerDelegate,
                           MTSpeechRecognizerViewDelegate
 {
+    var customOverlayViewController: CustomOverlayViewController?
     @IBOutlet weak var shootedImageView: UIImageView!
+    @IBOutlet weak var shootedRecordView: UIView!
     var clearImage: UIImage?
     var copiedImagePicker:UIImagePickerController? = UIImagePickerController()
     let screenWidth = UIScreen.mainScreen().bounds.size.width
@@ -31,12 +33,15 @@ class MainViewController: UIViewController,
     //var canWriting: Bool = false
     var currentPenColor: CGColor = UIColor.grayColor().CGColor
     var customView: CustomOverlayView?
+    var speechRecognizerView: MTSpeechRecognizerView?
     
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var penButton: UIButton!
     @IBOutlet weak var shootedImageSearchButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shootedImageVoiceButton: UIButton!
+    
+    var recordingOnOffResult:Bool = false
     
     func shouldCancelImageRecognitionForTesseract(tesseract: G8Tesseract!) -> Bool {
         return false; // return true if you need to interrupt tesseract before it finishes
@@ -94,11 +99,11 @@ class MainViewController: UIViewController,
                 bundle: nil
             )
             customView = customViewController.view as? CustomOverlayView
-        
+            customOverlayViewController = customViewController
             
-            let translate: CGAffineTransform = CGAffineTransformMakeTranslation(0.0, 70.0); //This slots the preview exactly in the middle of the screen by moving it down 0 points
-            let scale: CGAffineTransform  = CGAffineTransformScale(translate, 1.0, 1.2);
-            
+            let translate: CGAffineTransform = CGAffineTransformMakeTranslation(0.0, 70.0) //This slots the preview exactly in the middle of the screen by moving it down 0 points
+            let scale: CGAffineTransform  = CGAffineTransformScale(translate, 1.0, 1.2)
+            //let scale: CGAffineTransform  = CGAffineTransformScale(translate, 1.0, 1.0)
             imagePicker!.cameraViewTransform = translate
             imagePicker!.cameraViewTransform = scale
 
@@ -233,7 +238,8 @@ class MainViewController: UIViewController,
         let isAvailableUsingMic:Bool = MTSpeechRecognizer.isRecordingAvailable()
         print("isAvailableUsingMic : "+String(isAvailableUsingMic))
         
-        let config:NSDictionary = [SpeechRecognizerConfigKeyApiKey:"6fe94d81f416ed44e516fe88a3938686", SpeechRecognizerConfigKeyCustomStrings:"SpeechRecognizerDefault"]
+        let config:NSDictionary = [SpeechRecognizerConfigKeyApiKey:"6fe94d81f416ed44e516fe88a3938686", SpeechRecognizerConfigKeyCustomStrings:"SpeechRecognizerDefault", SpeechRecognizerConfigKeyShowSuggestView:false]
+        //let config:NSDictionary = [SpeechRecognizerConfigKeyApiKey:"test중", SpeechRecognizerConfigKeyCustomStrings:"SpeechRecognizerDefault", SpeechRecognizerConfigKeyShowSuggestView:"NO"]
         
         //mic 사용이 허용된 경우
         if isAvailableUsingMic{
@@ -242,20 +248,29 @@ class MainViewController: UIViewController,
             recongnizerInstance.startRecording()
             print("recongnizerInstance.startRecording()")
             
-            var currentView: UIView
             
+            var currentView: UIView
             if isShooted{
                 currentView = self.view
             }else{
                 currentView = self.customView!
             }
             
-            let speechRecognizerView: MTSpeechRecognizerView = MTSpeechRecognizerView(frame: currentView.frame, withConfig: config as [NSObject : AnyObject])
+            speechRecognizerView = MTSpeechRecognizerView(frame: currentView.frame, withConfig: config as [NSObject : AnyObject])
+            speechRecognizerView!.delegate = self // view의 delegate 설정
+            //currentView.addSubview(speechRecognizerView!)
             
-            speechRecognizerView.delegate = self // view의 delegate 설정
-            //self.view.addSubview(speechRecognizerView)
-            currentView.addSubview(speechRecognizerView)
-            speechRecognizerView.show()
+            speechRecognizerView!.frame.size.height=0
+            speechRecognizerView!.frame.size.width=0
+            speechRecognizerView!.show()
+            shootedRecordView.hidden = false
+            shootedImageVoiceButton.setImage(UIImage(named: "voice_selected"), forState: .Normal)
+            customOverlayViewController?.setVoiceRecognitionUsing()
+            
+
+            /*for sv in speechRecognizerView.subviews{
+                sv.backgroundColor = UIColor(red: 0.7, green: 0.0, blue: 0.5, alpha: 0.5)
+            }*/
         }
     }
     
@@ -266,10 +281,16 @@ class MainViewController: UIViewController,
     func onResults(results: [AnyObject]!, confidences: [AnyObject]!, marked: Bool) {
         //음성인식이 성공적으로 끝났을 때에 호출 됨
         searchWeb(String(results[0]))
+        shootedRecordView.hidden = true
+        shootedImageVoiceButton.setImage(UIImage(named: "voice"), forState: .Normal)
+        customOverlayViewController?.setVoiceRecognitionNotUsing()
     }
     
     func onError(errorCode: MTSpeechRecognizerError, message: String!) {
         //뉴톤 기능 중 에러가 발생했을 때에 호출
+        shootedRecordView.hidden = true
+        shootedImageVoiceButton.setImage(UIImage(named: "voice"), forState: .Normal)
+        customOverlayViewController?.setVoiceRecognitionNotUsing()
     }
     
     func onReady() {
@@ -281,6 +302,9 @@ class MainViewController: UIViewController,
     }
     
     func onEndOfSpeech() {
+        shootedRecordView.hidden = true
+        shootedImageVoiceButton.setImage(UIImage(named: "voice"), forState: .Normal)
+        customOverlayViewController?.setVoiceRecognitionNotUsing()
         print("")
     }
     
@@ -289,6 +313,7 @@ class MainViewController: UIViewController,
     }
     
     func onFinished() {
+        shootedRecordView.hidden = true
         print("")
     }
 
@@ -304,8 +329,6 @@ class MainViewController: UIViewController,
     
     func didShoot(overlayView:CustomOverlayView) {
         copiedImagePicker!.takePicture()
-        overlayView.testLabel.text = "찍었다."
-        
         print("Shot Photo")
     }
     
@@ -322,16 +345,19 @@ class MainViewController: UIViewController,
     
     
     //토치(플래시라이트)를 On/Off 시켜주는 함수
-    func toggleFlash() {
+    func toggleFlash() -> Bool {
+        var onOffResult:Bool? = false
         let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         if (device.hasTorch) {
             do {
                 try device.lockForConfiguration()
                 if (device.torchMode == AVCaptureTorchMode.On) {
                     device.torchMode = AVCaptureTorchMode.Off
+                    onOffResult = false
                 } else {
                     do {
                         try device.setTorchModeOnWithLevel(1.0)
+                        onOffResult = true
                     } catch {
                         print(error)
                     }
@@ -341,6 +367,8 @@ class MainViewController: UIViewController,
                 print(error)
             }
         }
+        
+        return onOffResult!
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

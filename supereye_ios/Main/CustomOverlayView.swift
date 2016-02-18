@@ -11,28 +11,32 @@ import UIKit
 protocol CustomOverlayDelegate{
     func didShoot(overlayView:CustomOverlayView)
     func searchByVoice()
-    func toggleFlash()
+    func toggleFlash()->Bool
     func searchWeb(keyword: String)
 }
 
-class CustomOverlayView: UIView {
-
+class CustomOverlayView: UIView 
+{
     var delegate:CustomOverlayDelegate! = nil
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var shootButton: UIButton!
     @IBOutlet weak var flashButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
-    
+    @IBOutlet weak var voiceButton: UIButton!
+    @IBOutlet weak var recordView: UIView!
     
     @IBAction func clickedSearchButton(sender: AnyObject) {
-        testLabel.text = "검색들어갑니다."
         let resultKeyword: String = ""
         delegate.searchWeb(resultKeyword)
     }
     
     @IBAction func clickedFlashButton(sender: AnyObject) {
-        testLabel.text = "후레쉬 On/Off"
-        delegate.toggleFlash()
+        let flashStatus:Bool = delegate.toggleFlash()
+        
+        if flashStatus == true{
+            flashButton.setImage(UIImage(named: "flash_selected"), forState: .Normal)
+        }else{
+            flashButton.setImage(UIImage(named: "flash"), forState: .Normal)
+        }
     }
     
     
@@ -43,7 +47,8 @@ class CustomOverlayView: UIView {
 
     @IBAction func clickedVoiceButton(sender: AnyObject) {
         delegate.searchByVoice()
+        
     }
-
+    
 
 }

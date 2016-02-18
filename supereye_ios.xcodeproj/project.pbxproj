@@ -13,7 +13,6 @@
 		AD5C705B1C69C25600C59701 /* CustomOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5C70591C69C25600C59701 /* CustomOverlayViewController.xib */; };
 		AD5C705D1C69C26A00C59701 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5C705C1C69C26A00C59701 /* CustomOverlayView.swift */; };
 		AD84EB831C72F63A00A49CDB /* DaumSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB7F1C72F63A00A49CDB /* DaumSpeech.framework */; };
-		AD84EB841C72F63A00A49CDB /* DaumSpeechResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD84EB811C72F63A00A49CDB /* DaumSpeechResources.bundle */; };
 		AD84EB851C72F63A00A49CDB /* SpeechRecognizerDefault.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD84EB821C72F63A00A49CDB /* SpeechRecognizerDefault.strings */; };
 		AD84EB891C72F85A00A49CDB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB881C72F85A00A49CDB /* MediaPlayer.framework */; };
 		AD84EB8B1C72F86B00A49CDB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB8A1C72F86B00A49CDB /* QuartzCore.framework */; };
@@ -23,6 +22,10 @@
 		AD84EB931C72F89200A49CDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB921C72F89200A49CDB /* UIKit.framework */; };
 		AD84EB951C72F89B00A49CDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD84EB941C72F89B00A49CDB /* Foundation.framework */; };
 		ADD1500A1C7339BE0058B04C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD150091C7339BE0058B04C /* CoreGraphics.framework */; };
+		ADD1500C1C7408090058B04C /* DaumSpeechResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AD84EB811C72F63A00A49CDB /* DaumSpeechResources.bundle */; };
+		ADD1500E1C7547670058B04C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD1500D1C7547670058B04C /* CoreMedia.framework */; };
+		ADD150101C7547700058B04C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD1500F1C7547700058B04C /* CoreVideo.framework */; };
+		ADD150121C7547780058B04C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD150111C7547780058B04C /* OpenGLES.framework */; };
 		ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */; };
 		ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA321C673AF90094FC1A /* Main.storyboard */; };
 		ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA351C673AF90094FC1A /* Assets.xcassets */; };
@@ -69,6 +72,9 @@
 		AD84EB921C72F89200A49CDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD84EB941C72F89B00A49CDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADD150091C7339BE0058B04C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ADD1500D1C7547670058B04C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ADD1500F1C7547700058B04C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		ADD150111C7547780058B04C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		ADE1BA2B1C673AF90094FC1A /* supereye_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = supereye_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADE1BA331C673AF90094FC1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD150121C7547780058B04C /* OpenGLES.framework in Frameworks */,
+				ADD150101C7547700058B04C /* CoreVideo.framework in Frameworks */,
+				ADD1500E1C7547670058B04C /* CoreMedia.framework in Frameworks */,
 				ADD1500A1C7339BE0058B04C /* CoreGraphics.framework in Frameworks */,
 				AD84EB951C72F89B00A49CDB /* Foundation.framework in Frameworks */,
 				AD84EB931C72F89200A49CDB /* UIKit.framework in Frameworks */,
@@ -223,6 +232,9 @@
 		EE388A10C275E001355485B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADD150111C7547780058B04C /* OpenGLES.framework */,
+				ADD1500F1C7547700058B04C /* CoreVideo.framework */,
+				ADD1500D1C7547670058B04C /* CoreMedia.framework */,
 				ADD150091C7339BE0058B04C /* CoreGraphics.framework */,
 				AD84EB941C72F89B00A49CDB /* Foundation.framework */,
 				AD84EB921C72F89200A49CDB /* UIKit.framework */,
@@ -352,8 +364,8 @@
 				ADF057F81C6C9CF300F9624F /* tessdata in Resources */,
 				AD84EB851C72F63A00A49CDB /* SpeechRecognizerDefault.strings in Resources */,
 				ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */,
-				AD84EB841C72F63A00A49CDB /* DaumSpeechResources.bundle in Resources */,
 				ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */,
+				ADD1500C1C7408090058B04C /* DaumSpeechResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
