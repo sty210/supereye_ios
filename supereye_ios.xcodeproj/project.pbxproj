@@ -26,6 +26,8 @@
 		ADD1500E1C7547670058B04C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD1500D1C7547670058B04C /* CoreMedia.framework */; };
 		ADD150101C7547700058B04C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD1500F1C7547700058B04C /* CoreVideo.framework */; };
 		ADD150121C7547780058B04C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD150111C7547780058B04C /* OpenGLES.framework */; };
+		ADE11C231C75988900E273FE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADE11C1F1C7592E100E273FE /* GPUImage.framework */; };
+		ADE11C241C75988900E273FE /* GPUImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ADE11C1F1C7592E100E273FE /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ADE1BA2F1C673AF90094FC1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */; };
 		ADE1BA341C673AF90094FC1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA321C673AF90094FC1A /* Main.storyboard */; };
 		ADE1BA361C673AF90094FC1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE1BA351C673AF90094FC1A /* Assets.xcassets */; };
@@ -38,6 +40,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		ADE11C1C1C7592E100E273FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		ADE11C1E1C7592E100E273FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+		ADE11C201C75985200E273FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCE209E41943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
+		ADE11C251C75988900E273FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCE209E41943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
 		ADE1BA401C673AF90094FC1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADE1BA231C673AF90094FC1A /* Project object */;
@@ -53,6 +83,20 @@
 			remoteInfo = supereye_ios;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ADE11C271C75988900E273FE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ADE11C241C75988900E273FE /* GPUImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3312B628EB4AE1F5D6BC57A5 /* Pods-supereye_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-supereye_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-supereye_ios/Pods-supereye_ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +115,7 @@
 		AD84EB901C72F88900A49CDB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		AD84EB921C72F89200A49CDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD84EB941C72F89B00A49CDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../../Downloads/GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		ADD150091C7339BE0058B04C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ADD1500D1C7547670058B04C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		ADD1500F1C7547700058B04C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -111,6 +156,7 @@
 				AD84EB8B1C72F86B00A49CDB /* QuartzCore.framework in Frameworks */,
 				AD84EB891C72F85A00A49CDB /* MediaPlayer.framework in Frameworks */,
 				AD84EB831C72F63A00A49CDB /* DaumSpeech.framework in Frameworks */,
+				ADE11C231C75988900E273FE /* GPUImage.framework in Frameworks */,
 				AD3A169D1C6DA3A8008B4CCB /* libz.tbd in Frameworks */,
 				66980843D82568840D0625B5 /* libPods-supereye_ios.a in Frameworks */,
 			);
@@ -152,9 +198,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		ADE11C171C7592E100E273FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADE11C1D1C7592E100E273FE /* libGPUImage.a */,
+				ADE11C1F1C7592E100E273FE /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		ADE1BA221C673AF90094FC1A = {
 			isa = PBXGroup;
 			children = (
+				ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */,
 				ADE1BA2D1C673AF90094FC1A /* supereye_ios */,
 				ADE1BA421C673AF90094FC1A /* supereye_iosTests */,
 				ADE1BA4D1C673AF90094FC1A /* supereye_iosUITests */,
@@ -177,9 +233,9 @@
 		ADE1BA2D1C673AF90094FC1A /* supereye_ios */ = {
 			isa = PBXGroup;
 			children = (
-				AD84EB7E1C72F63A00A49CDB /* DaumSpeech.embeddedframework */,
 				AD72716F1C6DA927002A0B69 /* Supereye-Bridging-Header.h */,
 				ADF057F71C6C9CF300F9624F /* tessdata */,
+				AD84EB7E1C72F63A00A49CDB /* DaumSpeech.embeddedframework */,
 				ADE1BA5D1C673B8F0094FC1A /* Main */,
 				ADE1BA2E1C673AF90094FC1A /* AppDelegate.swift */,
 				ADE1BA351C673AF90094FC1A /* Assets.xcassets */,
@@ -262,10 +318,13 @@
 				ADE1BA291C673AF90094FC1A /* Resources */,
 				55228B6882994AA1E2022C3A /* Embed Pods Frameworks */,
 				FBB93E73AA1B102EBCC51E98 /* Copy Pods Resources */,
+				ADE11C271C75988900E273FE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				ADE11C211C75985200E273FE /* PBXTargetDependency */,
+				ADE11C261C75988900E273FE /* PBXTargetDependency */,
 			);
 			name = supereye_ios;
 			productName = supereye_ios;
@@ -345,6 +404,12 @@
 			mainGroup = ADE1BA221C673AF90094FC1A;
 			productRefGroup = ADE1BA2C1C673AF90094FC1A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = ADE11C171C7592E100E273FE /* Products */;
+					ProjectRef = ADCD34201C757CDA00E915C3 /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				ADE1BA2A1C673AF90094FC1A /* supereye_ios */,
@@ -353,6 +418,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		ADE11C1D1C7592E100E273FE /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = ADE11C1C1C7592E100E273FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ADE11C1F1C7592E100E273FE /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = ADE11C1E1C7592E100E273FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		ADE1BA291C673AF90094FC1A /* Resources */ = {
@@ -465,6 +547,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		ADE11C211C75985200E273FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImageFramework;
+			targetProxy = ADE11C201C75985200E273FE /* PBXContainerItemProxy */;
+		};
+		ADE11C261C75988900E273FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImageFramework;
+			targetProxy = ADE11C251C75988900E273FE /* PBXContainerItemProxy */;
+		};
 		ADE1BA411C673AF90094FC1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = ADE1BA2A1C673AF90094FC1A /* supereye_ios */;

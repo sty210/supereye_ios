@@ -11,6 +11,7 @@ import UIKit
 import MobileCoreServices
 import AVFoundation
 import SpriteKit
+import GPUImage
 
 class MainViewController: UIViewController,
                           UIImagePickerControllerDelegate,
@@ -23,6 +24,7 @@ class MainViewController: UIViewController,
     var customOverlayViewController: CustomOverlayViewController?
     @IBOutlet weak var shootedImageView: UIImageView!
     @IBOutlet weak var shootedRecordView: UIView!
+    @IBOutlet weak var shootedImageMagic: UIButton!
     var clearImage: UIImage?
     var copiedImagePicker:UIImagePickerController? = UIImagePickerController()
     let screenWidth = UIScreen.mainScreen().bounds.size.width
@@ -40,8 +42,83 @@ class MainViewController: UIViewController,
     @IBOutlet weak var shootedImageSearchButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var shootedImageVoiceButton: UIButton!
+    @IBOutlet weak var sharpCompareButton: UIButton!
+    @IBOutlet weak var shootedImageShareButton: UIButton!
     
     var recordingOnOffResult:Bool = false
+    
+    
+    
+    
+    @IBOutlet weak var shootedSlider: UISlider!
+    @IBOutlet weak var sliderView: UIView!
+    var inputImage: UIImage?
+    var stillImageSource: GPUImagePicture?
+    var sharpenFilter: GPUImageSharpenFilter?
+    var sketchFilter: GPUImageSketchFilter?
+    var isSelectedFilterButton: Bool = false
+    
+    @IBAction func clickedSharpenEffectButton(sender: AnyObject) {
+        
+        //sliderView.hidden = !sliderView.hidden
+        isSelectedFilterButton = !isSelectedFilterButton
+        if !isSelectedFilterButton {
+            shootedImageMagic.setImage(UIImage(named: "magic"), forState: .Normal)
+
+            shootedImageView.image = clearImage
+        }else{
+            shootedImageMagic.setImage(UIImage(named: "magic_selected"), forState: .Normal)
+            
+            inputImage = clearImage
+            stillImageSource = GPUImagePicture(image: inputImage)
+            sketchFilter = GPUImageSketchFilter()
+            stillImageSource!.addTarget(sketchFilter)
+            sketchFilter!.useNextFrameForImageCapture()
+            stillImageSource!.processImage()
+            shootedImageView.image = sketchFilter!.imageByFilteringImage(inputImage)
+        }
+        
+        print("clickedSharpenEffectButton  Clicked!!!!!!!!!!")
+        
+    }
+    
+    
+    
+    
+    //return 버튼 클릭 시 clearImage로 바꾸어 원본으로 돌아간다.
+    @IBAction func clickedReturnImageButton(sender: AnyObject) {
+        shootedSlider.value = 0
+        shootedImageView.image = clearImage
+    }
+    
+    @IBAction func sliderTouched(sender: AnyObject) {
+        inputImage = clearImage
+        stillImageSource = GPUImagePicture(image: inputImage)
+        sharpenFilter = GPUImageSharpenFilter()
+        
+        sharpenFilter!.sharpness = CGFloat(shootedSlider.value)
+        
+        stillImageSource!.addTarget(sharpenFilter)
+        sharpenFilter!.useNextFrameForImageCapture()
+        stillImageSource!.processImage()
+        shootedImageView.image = sharpenFilter!.imageByFilteringImage(inputImage)
+    }
+
+    @IBAction func clickedMoreactionButton(sender: AnyObject) {
+        
+        let imageToShare:UIImage = shootedImageView.image!
+        
+        if let myString = NSURL(string: "SuperEye")
+        {
+            let objectsToShare = [imageToShare, myString]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            //New Excluded Activities Code
+            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+            
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
     
     func shouldCancelImageRecognitionForTesseract(tesseract: G8Tesseract!) -> Bool {
         return false; // return true if you need to interrupt tesseract before it finishes
@@ -61,7 +138,12 @@ class MainViewController: UIViewController,
         penButton.setImage(UIImage(named: "pen_selected"), forState: .Highlighted)
         cancelButton.setImage(UIImage(named: "cancel_selected"), forState: .Highlighted)
         shootedImageVoiceButton.setImage(UIImage(named: "voice_selected"), forState: .Highlighted)
+        shootedImageMagic.setImage(UIImage(named: "magic_selected"), forState: .Highlighted)
+        shootedImageShareButton.setImage(UIImage(named: "share_selected"), forState: .Highlighted)
     }
+    
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         
@@ -158,6 +240,7 @@ class MainViewController: UIViewController,
     
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -178,6 +261,7 @@ class MainViewController: UIViewController,
             switch action.style{
             case .Default:
                 print("default")
+                self.shootedImageMagic.setImage(UIImage(named: "magic"), forState: .Normal)
                 self.showCamera()
                 
             case .Cancel:
@@ -225,6 +309,7 @@ class MainViewController: UIViewController,
     
     @IBAction func shootedImageCancel(sender: AnyObject) {
         isShooted = false
+        shootedImageMagic.setImage(UIImage(named: "magic"), forState: .Normal)
         //카메라를 다시 연다.
         showCamera()
     }
@@ -439,6 +524,7 @@ class MainViewController: UIViewController,
         let eraseAction = UIAlertAction(title: "erase all", style: .Destructive, handler: {
             (alert: UIAlertAction!) -> Void in
             self.shootedImageView.image = self.clearImage
+            self.shootedImageMagic.setImage(UIImage(named: "magic"), forState: .Normal)
         })
         
         

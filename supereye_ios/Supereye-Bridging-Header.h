@@ -13,5 +13,7 @@
 #import "G8TesseractDelegate.h"
 
 #import <DaumSpeech/DaumSpeechRecognizer.h>
+//#import <GPUImage/GPUImage.h>
+
 
 #endif /* G8TesseractDelegate_Bridging_Header_h */
